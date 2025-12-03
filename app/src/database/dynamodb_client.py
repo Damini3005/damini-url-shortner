@@ -14,6 +14,9 @@ class DynamoDBClient:
 
      logger.info(f"DynamoDBClient initialized for table: {table_name}")
 
+
+
+
   def get_url_entry_by_short_code(self,short_code: str) -> Optional[Dict[str, Any]]:
      """Retrieves a URL entry from DynamoDB by its short code."""
 
@@ -29,6 +32,7 @@ class DynamoDBClient:
      """Saves a new url entry to DynamoDB""" 
 
      try: 
+        logger.info(f"Item received to put in db:{item} ",)
         self.table.put_item(Item=item)
         return True
      except Exception as e:
